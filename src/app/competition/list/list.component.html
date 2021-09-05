@@ -1,29 +1,27 @@
 <div class="content">
   <div class="container">
-    <div class="card">
-      <div class="row">
-        <div class="col-md-10 mb-3 mb-md-0">
-          <input type="text" class="form-control">
-        </div>
-        <div class="col-md-2">
-          <button class="btn btn-primary w-100">Найти</button>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-5 mb-3 mb-md-0">
-          <label for="from" class="form-label">Дата начала периода:</label>
-          <input type="date" class="form-control" id="from">
-        </div>
-        <div class="col-md-5 mb-3 mb-md-0">
-          <label for="to" class="form-label">Дата окончания периода:</label>
-          <input type="date" class="form-control" id="to">
-        </div>
-        <div class="col-md-2 flex-end">
-          <button class="btn btn-primary w-100">Найти</button>
-        </div>
-      </div>
+    <app-search (changeModel)="changeSearch($event)"></app-search>
+    <div class="card" *ngIf="isLoaded">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Название</th>
+          <th scope="col">Место</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of model?.competitions | competitionSearch: search; let i = index;">
+          <td>{{i + 1}}</td>
+          <td>
+            <a [routerLink]="['detail', item.id]">
+              {{item.name}}
+            </a>
+          </td>
+          <td>{{item.area?.name}}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

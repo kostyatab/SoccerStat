@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="row">
+    <div class="col-md-10 mb-3 mb-md-0">
+      <input type="text" class="form-control" [(ngModel)]="model" (keyup.enter)="changeSearch()">
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-primary w-100" (click)="changeSearch()">Найти</button>
+    </div>
+  </div>
+</div>
