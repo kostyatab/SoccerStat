@@ -15,7 +15,8 @@ import { TeamsSearchPipe } from './teams-search.pipe';
   exports: [
     SearchComponent,
     CompetitionSearchPipe,
-    TeamsSearchPipe
+    TeamsSearchPipe,
+    FilterComponent
   ],
   imports: [
     FormsModule

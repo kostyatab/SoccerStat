@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { CompetitionsDTO } from './models/competitionsDTO';
@@ -24,11 +24,33 @@ export class ApiService {
     return this.httpClient.get<CompetitionTeamsDTO>(environment.apiServer + `competitions/${id}/teams`, {headers: this.headers});
   }
 
-  competitionMatch(id: number): Observable<CompetitionMatchesDTO> {
-    return this.httpClient.get<CompetitionMatchesDTO>(environment.apiServer + `competitions/${id}/matches/`, {headers: this.headers});
+  competitionMatch(id: number, dateFrom?: Date, dateTo?: Date): Observable<CompetitionMatchesDTO> {
+    let params = new HttpParams();
+
+    if (dateFrom){
+      params = params.set('dateFrom', dateFrom.toString())
+    }
+
+    if (dateTo){
+      params = params.set('dateTo', dateTo.toString())
+    }
+
+    return this.httpClient.get<CompetitionMatchesDTO>(environment.apiServer + `competitions/${id}/matches/`,
+      {headers: this.headers, params});
   }
 
-  teamMatches(id: number): Observable<TeamMatchesDTO>{
-    return this.httpClient.get<TeamMatchesDTO>(environment.apiServer + `teams/${id}/matches/`, {headers: this.headers});
+  teamMatches(id: number, dateFrom?: Date, dateTo?: Date): Observable<TeamMatchesDTO>{
+    let params = new HttpParams();
+
+    if (dateFrom){
+      params = params.set('dateFrom', dateFrom.toString())
+    }
+
+    if (dateTo){
+      params = params.set('dateTo', dateTo.toString())
+    }
+
+    return this.httpClient.get<TeamMatchesDTO>(environment.apiServer + `teams/${id}/matches/`,
+      {headers: this.headers, params});
   }
 }

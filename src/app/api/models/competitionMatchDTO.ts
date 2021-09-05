@@ -1,4 +1,6 @@
 import { SeasonDTO } from './seasonDTO';
+import { TeamDTO } from './teamDTO';
+import { ScoreDTO } from './scoreDTO';
 
 export class CompetitionMatchDTO{
   id: number = 0;
@@ -10,4 +12,7 @@ export class CompetitionMatchDTO{
   stage: string = '';
   group: string = '';
   lastUpdated: Date = new Date();
+  homeTeam: TeamDTO | null  = null;
+  awayTeam: TeamDTO | null  = null;
+  score: ScoreDTO | null = null;
 }
