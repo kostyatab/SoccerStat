@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api/api.service';
 import { CompetitionsDTO } from '../../api/models/competitionsDTO';
+import { ActivatedRoute, Router } from '@angular/router';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -13,18 +15,24 @@ export class ListComponent implements OnInit {
   model: CompetitionsDTO | null = null;
   search: string = '';
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.apiService.competitionList()
-      .subscribe(x => {
-        this.model = x;
+    combineLatest([this.activatedRoute.queryParams, this.apiService.competitionList()])
+      .subscribe(data => {
+        this.search = data[0]['search'] || '';
+        this.model = data[1];
         this.isLoaded = true;
       });
   }
 
   changeSearch(value: string){
-    this.search = value;
+    this.router.navigate(['/'], {queryParams: {
+        search: value
+      }})
   }
 
 }

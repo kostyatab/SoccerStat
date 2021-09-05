@@ -1,6 +1,6 @@
 <div class="content">
   <div class="container">
-    <app-search (changeModel)="changeSearch($event)"></app-search>
+    <app-search [model]="search" (changeModel)="changeSearch($event)"></app-search>
     <div class="card" *ngIf="isLoaded">
       <table class="table table-bordered">
         <thead>
