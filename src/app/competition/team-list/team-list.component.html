@@ -1,1 +1,26 @@
-<p>team-list works!</p>
+<div class="content" *ngIf="isLoaded">
+  <div class="container">
+    <app-header [model]="model?.competition || null"></app-header>
+    <app-search [model]="search" (changeModel)="changeSearch($event)"></app-search>
+    <div class="card">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th class="col-with-number">#</th>
+          <th>Название</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of model?.teams | teamsSearch: search; let i = index;">
+          <td>{{i + 1}}</td>
+          <td>
+            <a [routerLink]="['/team', item.id]">
+              {{item.name}}
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

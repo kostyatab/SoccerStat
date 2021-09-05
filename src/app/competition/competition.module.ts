@@ -7,6 +7,7 @@ import { TeamListComponent } from './team-list/team-list.component';
 import { MatchListComponent } from './match-list/match-list.component';
 import { AppCommonModule } from '../common/app-common.module';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { CommonModule } from '@angular/common';
         CompetitionComponent,
         ListComponent,
         TeamListComponent,
-        MatchListComponent
+        MatchListComponent,
+        HeaderComponent
     ],
   imports: [
     CompetitionRoutingModule,

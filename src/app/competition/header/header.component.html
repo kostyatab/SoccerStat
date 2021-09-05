@@ -1,0 +1,14 @@
+
+<div class="card">
+  Соревнование: {{model?.name}}
+</div>
+<div class="card">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/team-list', model?.id]" [routerLinkActive]="'active'">Команды</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/match-list', model?.id]" [routerLinkActive]="'active'">Матчи</a>
+        </li>
+      </ul>
+    </div>
