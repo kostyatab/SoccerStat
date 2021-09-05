@@ -5,7 +5,6 @@ import { CompetitionComponent } from './competition.component';
 import { ListComponent } from './list/list.component';
 import { TeamListComponent } from './team-list/team-list.component';
 import { MatchListComponent } from './match-list/match-list.component';
-import { DetailComponent } from './detail/detail.component';
 import { AppCommonModule } from '../common/app-common.module';
 import { CommonModule } from '@angular/common';
 
@@ -15,8 +14,7 @@ import { CommonModule } from '@angular/common';
         CompetitionComponent,
         ListComponent,
         TeamListComponent,
-        MatchListComponent,
-        DetailComponent
+        MatchListComponent
     ],
   imports: [
     CompetitionRoutingModule,

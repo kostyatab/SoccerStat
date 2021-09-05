@@ -20,10 +20,6 @@ export class ApiService {
     return this.httpClient.get<CompetitionsDTO>(environment.apiServer + 'competitions/', {headers: this.headers});
   }
 
-  competitionDetail(id: number): Observable<CompetitionsDetailDTO> {
-    return this.httpClient.get<CompetitionsDetailDTO>(environment.apiServer + `competitions/${id}`, {headers: this.headers});
-  }
-
   competitionTeams(id: number): Observable<CompetitionTeamsDTO> {
     return this.httpClient.get<CompetitionTeamsDTO>(environment.apiServer + `competitions/${id}/teams`, {headers: this.headers});
   }
