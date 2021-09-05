@@ -18,10 +18,13 @@ import { HeaderComponent } from './header/header.component';
         MatchListComponent,
         HeaderComponent
     ],
-  imports: [
-    CompetitionRoutingModule,
-    CommonModule,
-    AppCommonModule
-  ]
+    exports: [
+        HeaderComponent
+    ],
+    imports: [
+        CompetitionRoutingModule,
+        CommonModule,
+        AppCommonModule
+    ]
 })
 export class CompetitionModule { }

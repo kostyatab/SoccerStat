@@ -1,1 +1,29 @@
-<p>match-list works!</p>
+<div class="content" *ngIf="isLoaded">
+  <div class="container">
+    <app-filter [model]="{from: from, to: to}" (changeModel)="changeFilter($event)"></app-filter>
+    <div class="card">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th class="col-with-number">#</th>
+          <th>Data</th>
+          <th>Матч</th>
+          <th>Результат</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of model?.matches; let i = index;">
+          <td>{{i + 1}}</td>
+          <td>{{item.utcDate | date: 'dd.MM.yyyy' }}</td>
+          <td>
+            {{item.homeTeam?.name}} - {{item.awayTeam?.name}}
+          </td>
+          <td>
+            {{item.score?.fullTime?.homeTeam}} : {{item.score?.fullTime?.awayTeam}}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

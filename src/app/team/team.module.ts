@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { TeamRoutingModule } from './team-routing.module';
 import { TeamComponent } from './team.component';
 import { MatchListComponent } from './match-list/match-list.component';
+import { CompetitionModule } from '../competition/competition.module';
+import { AppCommonModule } from '../common/app-common.module';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { MatchListComponent } from './match-list/match-list.component';
   ],
   imports: [
     CommonModule,
-    TeamRoutingModule
+    TeamRoutingModule,
+    CompetitionModule,
+    AppCommonModule
   ]
 })
 export class TeamModule { }
